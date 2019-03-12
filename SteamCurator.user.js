@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Steam Curator
 // @namespace    https://gist.github.com/MalikAQayum/
-// @version      0.1
+// @version      0.2
 // @description  Does Curator Stuff.
 // @author       MalikQayum
 // @connect      api.steampowered.com
@@ -11,23 +11,25 @@
 // @match        https://store.steampowered.com/curator/*/admin/test
 // @require     https://raw.githubusercontent.com/MalikAQayum/SteamCurator/master/lib/Chartjs_v1.1.1.js
 // @require     https://raw.githubusercontent.com/MalikAQayum/SteamCurator/master/lib/jQuery_v1.11.1.js
-// @require     https://raw.githubusercontent.com/MalikAQayum/SteamCurator/master/lib/titleAlert.js
-// @require     https://raw.githubusercontent.com/MalikAQayum/SteamCurator/master/func/CleanPage.js
-// @require     https://raw.githubusercontent.com/MalikAQayum/SteamCurator/master/func/PCGameitDataContainer.js
-// @require     https://raw.githubusercontent.com/MalikAQayum/SteamCurator/master/func/pgbar.js
-// @require     https://raw.githubusercontent.com/MalikAQayum/SteamCurator/master/func/getAcceptedAjax.js
-// @require     https://raw.githubusercontent.com/MalikAQayum/SteamCurator/master/func/getAcceptedAjax_v2.js
-// @require     https://raw.githubusercontent.com/MalikAQayum/SteamCurator/master/func/getPendingAjax.js
-// @require     https://raw.githubusercontent.com/MalikAQayum/SteamCurator/master/func/getExcludedAjax.js
-// @require     https://raw.githubusercontent.com/MalikAQayum/SteamCurator/master/func/validateStorage.js
-// @require     https://raw.githubusercontent.com/MalikAQayum/SteamCurator/master/func/handleData.js
-// @require     https://raw.githubusercontent.com/MalikAQayum/SteamCurator/master/func/PCGameitlocalStorage.js
-// @require     https://raw.githubusercontent.com/MalikAQayum/SteamCurator/master/func/ClearlocalStorage.js
-// @require     https://raw.githubusercontent.com/MalikAQayum/SteamCurator/master/func/titleNewAppid.js
-// @require     https://raw.githubusercontent.com/MalikAQayum/SteamCurator/master/func/PCGameitNewestAppid.js
-// @require     https://raw.githubusercontent.com/MalikAQayum/SteamCurator/master/func/myCuratorLicenses.js
-// @require     https://raw.githubusercontent.com/MalikAQayum/SteamCurator/master/func/cChart_v1.js
-// @require     https://raw.githubusercontent.com/MalikAQayum/SteamCurator/master/func/verSteamCurator.js
+// @require     https://raw.githubusercontent.com/MalikAQayum/SteamCurator/master/lib/Curator/titleAlert.js
+// @require     https://raw.githubusercontent.com/MalikAQayum/SteamCurator/master/func/Curator/CleanPage.js
+// @require     https://raw.githubusercontent.com/MalikAQayum/SteamCurator/master/func/Curator/PCGameitDataContainer.js
+// @require     https://raw.githubusercontent.com/MalikAQayum/SteamCurator/master/func/Curator/pgbar.js
+// @require     https://raw.githubusercontent.com/MalikAQayum/SteamCurator/master/func/Curator/getAcceptedAjax.js
+// @require     https://raw.githubusercontent.com/MalikAQayum/SteamCurator/master/func/Curator/getAcceptedAjax_v2.js
+// @require     https://raw.githubusercontent.com/MalikAQayum/SteamCurator/master/func/Shared/getPendingAjax.js
+// @require     https://raw.githubusercontent.com/MalikAQayum/SteamCurator/master/func/Shared/getExcludedAjax.js
+// @require     https://raw.githubusercontent.com/MalikAQayum/SteamCurator/master/func/Curator/validateStorage.js
+// @require     https://raw.githubusercontent.com/MalikAQayum/SteamCurator/master/func/Curator/handleData.js
+// @require     https://raw.githubusercontent.com/MalikAQayum/SteamCurator/master/func/Curator/PCGameitlocalStorage.js
+// @require     https://raw.githubusercontent.com/MalikAQayum/SteamCurator/master/func/Curator/ClearlocalStorage.js
+// @require     https://raw.githubusercontent.com/MalikAQayum/SteamCurator/master/func/Curator/titleNewAppid.js
+// @require     https://raw.githubusercontent.com/MalikAQayum/SteamCurator/master/func/Curator/PCGameitNewestAppid.js
+// @require     https://raw.githubusercontent.com/MalikAQayum/SteamCurator/master/func/Curator/myCuratorLicenses.js
+// @require     https://raw.githubusercontent.com/MalikAQayum/SteamCurator/master/func/Curator/cChart_v1.js
+// @require     https://raw.githubusercontent.com/MalikAQayum/SteamCurator/master/func/Shared/verSteamCurator.js
+// @require     https://raw.githubusercontent.com/MalikAQayum/SteamCurator/master/func/Shared/validateStorage_2.js
+// @require     https://raw.githubusercontent.com/MalikAQayum/SteamCurator/master/func/Shared/handleStoreData.js
 // @downloadURL https://github.com/MalikAQayum/SteamCurator/raw/master/SteamCurator.user.js
 // @updateURL   https://github.com/MalikAQayum/SteamCurator/raw/master/SteamCurator.user.js
 // @grant        GM_xmlhttpRequest
@@ -35,7 +37,18 @@
 // @run-at      document-idle
 // ==/UserScript==
 
-GM_addStyle(`
+if (/store.steampowered.com\/app/.test(window.location.href)){
+    localStorage.removeItem('store_pAppids');
+    localStorage.removeItem('store_eAppids');
+    const clanid="33779114-pcgameit";
+    getPendingAjax(1,clanid);
+    getExcludedAjax(1,clanid);
+    validateStorage_2(clanid);
+}
+
+if (/test/.test(window.location.href)){
+    CleanPage();
+    GM_addStyle(`
 .test00 { color: #ff0099}
 .test01 { color: #00ced1}
 .test02 { color: #088da5}
@@ -60,45 +73,38 @@ table.MQStyle tfoot .links a{ display: inline-block; background: #FFFFFF; color:
 
 `);
 
-(function($) //https://www.sitepoint.com/auto-refresh-div-content-jquery-ajax/
- {
-	 CleanPage();
-	 localStorage.clear();
-    $(document).ready(function(){
-		verSteamCurator();
-        const timerloop = 30000;
-        const clanid = $(location).attr("href").split("/")[4];
-        $(".titleframe.PCGameitLoader").show();
-
-        var PCGameitAcceptedAppids = $(".titleframe.PCGameitAcceptedAppids");
-        var PCGameitPendingAppids = $(".titleframe.PCGameitPendingAppids");
-        var PCGameitExcludedAppids = $(".titleframe.PCGameitExcludedAppids");
-        var PCGameit_localStorage = $(".titleframe.PCGameit_localStorage");
-
-        PCGameitDataContainer();
-        ClearlocalStorage_0();
-        ClearlocalStorage_1();
-        titleNewAppid(clanid);
-        getAcceptedAjax_v2(clanid);
-        PCGameitAcceptedAppids.load(getAcceptedAjax(clanid));
-        PCGameitPendingAppids.load(getPendingAjax(clanid));
-        PCGameitExcludedAppids.load(getPendingAjax(clanid));
-        PCGameit_localStorage.load(PCGameitlocalStorage());
-        validateStorage_0();
-        validateStorage_1();
-
-        var refreshId = setInterval(function(){
-            $(".titleframe.PCGameitLoader").hide();
-            myCuratorLicenses();
+    (function($) //https://www.sitepoint.com/auto-refresh-div-content-jquery-ajax/
+     {
+        $(document).ready(function(){
+            localStorage.clear();
             ClearlocalStorage_0();
+            ClearlocalStorage_1();
+
+            const timerloop = 30000;
+            const clanid = $(location).attr("href").split("/")[4];
+            $(".titleframe.PCGameitLoader").show();
+
+            PCGameitDataContainer();
             titleNewAppid(clanid);
-            PCGameitAcceptedAppids.load(getAcceptedAjax(clanid));
-            PCGameitPendingAppids.load(getPendingAjax(clanid));
-            PCGameitExcludedAppids.load(getExcludedAjax(clanid));
-            PCGameit_localStorage.load(PCGameitlocalStorage());
-            validateStorage_0();
-            validateStorage_1();
-            pgbar(timerloop);
-        }, timerloop);
-    });
-})(jQuery);
+            getAcceptedAjax_v2(clanid);
+            getAcceptedAjax(clanid);
+            getPendingAjax(0,clanid);
+            getExcludedAjax(0,clanid);
+            PCGameitlocalStorage();
+
+            var refreshId = setInterval(function(){
+                $(".titleframe.PCGameitLoader").hide();
+                myCuratorLicenses();
+                ClearlocalStorage_0();
+                titleNewAppid(clanid);
+                getAcceptedAjax(clanid);
+                getPendingAjax(0,clanid);
+                getExcludedAjax(0,clanid);
+                PCGameitlocalStorage();
+                validateStorage_0();
+                validateStorage_1();
+                pgbar(timerloop);
+            }, timerloop);
+        });
+    })(jQuery);
+}
