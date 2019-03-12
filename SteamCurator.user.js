@@ -1,18 +1,19 @@
 // ==UserScript==
 // @name         Steam Curator
 // @namespace    https://gist.github.com/MalikAQayum/
-// @version      0.2
+// @version      0.3
 // @description  Does Curator Stuff.
 // @author       MalikQayum
 // @connect      api.steampowered.com
 // @connect      store.steampowered.com
 // @connect      help.steampowered.com
 // @connect      steamcommunity.com
-// @match        https://store.steampowered.com/curator/*/admin/test
+// @match        https://store.steampowered.com/curator/*/admin/livestat
 // @require     https://raw.githubusercontent.com/MalikAQayum/SteamCurator/master/lib/Chartjs_v1.1.1.js
 // @require     https://raw.githubusercontent.com/MalikAQayum/SteamCurator/master/lib/jQuery_v1.11.1.js
 // @require     https://raw.githubusercontent.com/MalikAQayum/SteamCurator/master/lib/Curator/titleAlert.js
 // @require     https://raw.githubusercontent.com/MalikAQayum/SteamCurator/master/func/Curator/CleanPage.js
+// @require     https://raw.githubusercontent.com/MalikAQayum/SteamCurator/master/func/Curator/livestat.js
 // @require     https://raw.githubusercontent.com/MalikAQayum/SteamCurator/master/func/Curator/PCGameitDataContainer.js
 // @require     https://raw.githubusercontent.com/MalikAQayum/SteamCurator/master/func/Curator/pgbar.js
 // @require     https://raw.githubusercontent.com/MalikAQayum/SteamCurator/master/func/Curator/getAcceptedAjax.js
@@ -46,7 +47,13 @@ if (/store.steampowered.com\/app/.test(window.location.href)){
     validateStorage_2(clanid);
 }
 
-if (/test/.test(window.location.href)){
+var re_admin = new RegExp(/admin/);
+if(document.URL.match(re_admin))
+{
+    livestat($J(location).attr("href").split("/")[4]);
+}
+
+if (/\/admin\/livestat/.test(window.location.href)){
     CleanPage();
     GM_addStyle(`
 .test00 { color: #ff0099}
@@ -73,7 +80,7 @@ table.MQStyle tfoot .links a{ display: inline-block; background: #FFFFFF; color:
 
 `);
 
-    (function($) //https://www.sitepoint.com/auto-refresh-div-content-jquery-ajax/
+    (function($)
      {
         $(document).ready(function(){
             localStorage.clear();
