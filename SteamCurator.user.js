@@ -8,6 +8,7 @@
 // @connect      store.steampowered.com
 // @connect      help.steampowered.com
 // @connect      steamcommunity.com
+// @match        https://store.steampowered.com/curator/*/admin/
 // @match        https://store.steampowered.com/curator/*/admin/livestat
 // @require     https://raw.githubusercontent.com/MalikAQayum/SteamCurator/master/lib/Chartjs_v1.1.1.js
 // @require     https://raw.githubusercontent.com/MalikAQayum/SteamCurator/master/lib/jQuery_v1.11.1.js
