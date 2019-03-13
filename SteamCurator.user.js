@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Steam Curator
 // @namespace    https://malikaqayum.github.io/SteamCurator/
-// @version      0.8
+// @version      0.9
 // @description  Does Curator Stuff.
 // @author       MalikQayum
 // @connect      api.steampowered.com
@@ -38,6 +38,7 @@
 // @grant        GM_addStyle
 // @run-at      document-idle
 // ==/UserScript==
+    var clanid="33779114-pcgameit";
 
 if (/store.steampowered.com\/app/.test(window.location.href)){
     localStorage.removeItem('store_pAppids');
