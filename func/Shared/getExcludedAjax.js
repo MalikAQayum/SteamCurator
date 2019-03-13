@@ -1,5 +1,4 @@
-import * as Settings from '../settings.js'
-function getExcludedAjax(Settings.clanid){
+function getExcludedAjax(clanid){
     GM_xmlhttpRequest({
         method: "GET",
         url: "https://store.steampowered.com/curator/"+clanid+"/admin/excluded?ajax=1",
