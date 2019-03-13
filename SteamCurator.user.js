@@ -11,7 +11,7 @@
 // @match        https://store.steampowered.com/curator/*/admin/livestat
 // @require     https://raw.githubusercontent.com/MalikAQayum/SteamCurator/master/lib/Chartjs_v1.1.1.js
 // @require     https://raw.githubusercontent.com/MalikAQayum/SteamCurator/master/lib/jQuery_v1.11.1.js
-// @require     https://raw.githubusercontent.com/MalikAQayum/SteamCurator/master/lib/Curator/titleAlert.js
+// @require     https://raw.githubusercontent.com/MalikAQayum/SteamCurator/master/lib/titleAlert.js
 // @require     https://raw.githubusercontent.com/MalikAQayum/SteamCurator/master/func/Curator/CleanPage.js
 // @require     https://raw.githubusercontent.com/MalikAQayum/SteamCurator/master/func/Curator/livestat.js
 // @require     https://raw.githubusercontent.com/MalikAQayum/SteamCurator/master/func/Curator/PCGameitDataContainer.js
@@ -29,8 +29,8 @@
 // @require     https://raw.githubusercontent.com/MalikAQayum/SteamCurator/master/func/Curator/myCuratorLicenses.js
 // @require     https://raw.githubusercontent.com/MalikAQayum/SteamCurator/master/func/Curator/cChart_v1.js
 // @require     https://raw.githubusercontent.com/MalikAQayum/SteamCurator/master/func/Shared/verSteamCurator.js
-// @require     https://raw.githubusercontent.com/MalikAQayum/SteamCurator/master/func/Shared/validateStorage_2.js
-// @require     https://raw.githubusercontent.com/MalikAQayum/SteamCurator/master/func/Shared/handleStoreData.js
+// @require     https://raw.githubusercontent.com/MalikAQayum/SteamCurator/master/func/Store/validateStorage_2.js
+// @require     https://raw.githubusercontent.com/MalikAQayum/SteamCurator/master/func/Store/handleStoreData.js
 // @downloadURL https://github.com/MalikAQayum/SteamCurator/raw/master/SteamCurator.user.js
 // @updateURL   https://github.com/MalikAQayum/SteamCurator/raw/master/SteamCurator.user.js
 // @grant        GM_xmlhttpRequest
