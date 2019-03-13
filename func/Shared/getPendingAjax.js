@@ -1,4 +1,5 @@
-function getPendingAjax(clanid){
+import * as Settings from '../settings.js'
+function getPendingAjax(Settings.clanid){
     GM_xmlhttpRequest({
         method: "GET",
         url: "https://store.steampowered.com/curator/"+clanid+"/admin/pending?ajax=1",
