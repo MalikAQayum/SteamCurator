@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Steam Curator
-// @namespace    https://gist.github.com/MalikAQayum/
-// @version      0.3
+// @namespace    https://malikaqayum.github.io/SteamCurator/
+// @version      0.4
 // @description  Does Curator Stuff.
 // @author       MalikQayum
 // @connect      api.steampowered.com
