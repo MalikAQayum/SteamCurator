@@ -1,4 +1,6 @@
 function getPendingAjax(clanid){
+        var clanid="33779114-pcgameit";
+
     GM_xmlhttpRequest({
         method: "GET",
         url: "https://store.steampowered.com/curator/"+clanid+"/admin/pending?ajax=1",
