@@ -13,11 +13,13 @@ function getExcludedAjax(clanid){
                 for(var i=0; i < excludedappids.length; i++) {
                     excludedappids[i] = excludedappids[i].replace(/app-ctn-/g, '').replace(/"/g, '');
                 }
+                console.log(clanid);
                 localStorage.setItem('eAppids',excludedappids.length);
             }else if(res.status === 500){
                 console.log("status "+ res.status+" => Internal Server Error");
                 setTimeout(function(){getExcludedAjax(clanid);}, 100);
             }else if(res.status === 302){
+                console.log(clanid);
                 console.log("status "+ res.status+" => Moved Temporarily");
                 setTimeout(function(){getExcludedAjax(clanid);}, 100);
             }else{
