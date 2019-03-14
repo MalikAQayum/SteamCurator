@@ -28,7 +28,7 @@ function validateStorage_0(){
         (GM.getValue("pSource") !== null) &&
         (GM.getValue("pAppids") !== null) &&
         (GM.getValue("eAppids") !== null)){
-        console.log(JSON.stringify(GM.getValue("pAppids")));
+        console.log(JSON.stringify(GM.getValue("pSource")));
         
         var promise1 = Promise.resolve(GM.getValue("pSource"));
         promise1.then(function(value) {
