@@ -16,7 +16,8 @@ function getAcceptedAjax_v2(clanid){
                 for(var i=0; i < acceptedappids.length; i++) {
                     acceptedappids[i] = acceptedappids[i].replace(/app-ctn-/g, '').replace(/"/g, '');
                 }
-                localStorage.setItem('aAppids',acceptedappids.length);
+                GM.setValue("aAppids", acceptedappids.length);
+                //localStorage.setItem('aAppids',acceptedappids.length);
             }else if(res.status === 500){
                 console.log("status "+ res.status+" => Internal Server Error");
                 setTimeout(function(){getAcceptedAjax_v2(clanid);}, 100);
