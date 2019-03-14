@@ -13,7 +13,6 @@ function getExcludedAjax(option,clanid){
                 for(var i=0; i < excludedappids.length; i++) {
                     excludedappids[i] = excludedappids[i].replace(/app-ctn-/g, '').replace(/"/g, '');
                 }
-                console.log(clanid);
                 localStorage.setItem('eAppids',excludedappids.length);
             }else if(res.status === 500){
                 console.log("status "+ res.status+" => Internal Server Error");
