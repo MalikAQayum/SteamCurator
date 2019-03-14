@@ -7,19 +7,16 @@ function getExcludedAjax(option,clanid){
         },
         onload: function(res) {
             if(res.status === 200){
-                GM.setValue('eSource',res.responseText);
-                //localStorage.setItem('eSource',res.responseText);
+                localStorage.setItem('eSource',res.responseText);
                 console.log("status "+ res.status+" => Success");
                 var excludedappids = res.responseText.match(/app-ctn-[0-9]*"/g);
                 for(var i=0; i < excludedappids.length; i++) {
                     excludedappids[i] = excludedappids[i].replace(/app-ctn-/g, '').replace(/"/g, '');
                 }
                 if(option === 0){
-                    GM.setValue("eAppids", JSON.stringify(excludedappids.length));
-                    //localStorage.setItem('eAppids',excludedappids.length);
+                    localStorage.setItem('eAppids',excludedappids.length);
                 }else if(option === 1){
-                    GM.setValue("store_eAppids", JSON.stringify(excludedappids));
-                    //localStorage.setItem('store_eAppids',excludedappids);
+                    localStorage.setItem('store_eAppids',excludedappids);
                 }else{
                 }
             }else if(res.status === 500){
