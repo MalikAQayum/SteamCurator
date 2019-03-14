@@ -1,5 +1,5 @@
-function getExcludedAjax(clanid){
-        //var clanid="33779114-pcgameit";
+function getExcludedAjax(){
+    var clanid=localStorage.getItem("myclanid");
 
     GM_xmlhttpRequest({
         method: "GET",
