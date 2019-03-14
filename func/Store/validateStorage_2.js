@@ -4,6 +4,6 @@ function validateStorage_2(clanid){
         var sourcePages = localStorage.getItem("store_pAppids").concat(","+localStorage.getItem("store_eAppids"));
         handleStoreData(clanid,sourcePages);
     }else{
-        setTimeout(function(){console.log("sourcePages not set yet"); validateStorage_2(clanid);}, 150);
+        setTimeout(function(){validateStorage_2(clanid);}, 150);
     }
 }
