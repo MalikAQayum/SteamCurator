@@ -28,7 +28,7 @@ function validateStorage_0(){
         (GM.getValue("pSource") !== null) &&
         (GM.getValue("pAppids") !== null) &&
         (GM.getValue("eAppids") !== null)){
-        var sourcePages = GM.getValue("pSource").concat(GM.getValue("eSource"));
+        var sourcePages = GM.getValue("pSource").toString().concat(GM.getValue("eSource").toString());
         handleData(sourcePages);
     }else{
         setTimeout(function(){validateStorage_0();}, 150);
@@ -39,7 +39,7 @@ function validateStorage_1(){
     if ((GM.getValue("eSource") !== null) &&
         (GM.getValue("pSource") !== null) &&
         (GM.getValue("aAppids") !== null)){
-        var sourcePages = GM.getValue("pSource").concat(GM.getValue("eSource"));
+        var sourcePages = GM.getValue("pSource").toString().concat(GM.getValue("eSource").toString());
         handleData(sourcePages);
     }else{
         setTimeout(function(){validateStorage_1();}, 150);
