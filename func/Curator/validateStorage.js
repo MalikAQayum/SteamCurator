@@ -29,6 +29,13 @@ function validateStorage_0(){
         (GM.getValue("pAppids") !== null) &&
         (GM.getValue("eAppids") !== null)){
         console.log(JSON.stringify(GM.getValue("pSource")));
+        
+        var promise1 = Promise.resolve(GM.getValue("pSource"));
+        promise1.then(function(value) {
+            console.log(value);
+            // expected output: 123
+        });
+        
         var sourcePages = GM.getValue("pSource").toString().concat(GM.getValue("eSource").toString());
         handleData(sourcePages);
     }else{
