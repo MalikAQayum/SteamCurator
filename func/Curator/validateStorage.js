@@ -28,7 +28,7 @@ function validateStorage_0(){
         (GM.getValue("pSource") !== null) &&
         (GM.getValue("pAppids") !== null) &&
         (GM.getValue("eAppids") !== null)){
-        console.log(GM.getValue("pSource"));
+        console.log(JSON.stringify(GM.getValue("pSource")));
         var sourcePages = GM.getValue("pSource").toString().concat(GM.getValue("eSource").toString());
         handleData(sourcePages);
     }else{
