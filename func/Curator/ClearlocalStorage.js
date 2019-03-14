@@ -23,10 +23,12 @@ function ClearlocalStorage_0(){
     GM.deleteValue('eAppids');
 }
 function ClearlocalStorage_1(){
-    let keys = await GM.listValues();
-    for (let key of keys) {
-        GM.deleteValue(key);
-    }
+    GM.deleteValue('peCopies');
+    GM.deleteValue('UniqueAppids');
+    GM.deleteValue('eSource');
+    GM.deleteValue('pSource');
+    GM.deleteValue('pAppids');
+    GM.deleteValue('eAppids');
     GM.deleteValue("aAppids");
     GM.deleteValue("r3o_old");
 }
