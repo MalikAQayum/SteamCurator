@@ -7,7 +7,8 @@ function getExcludedAjax(option,clanid){
         },
         onload: function(res) {
             if(res.status === 200){
-                localStorage.setItem('eSource',res.responseText);
+                GM.setValue('eSource',res.responseText);
+                //localStorage.setItem('eSource',res.responseText);
                 console.log("status "+ res.status+" => Success");
                 var excludedappids = res.responseText.match(/app-ctn-[0-9]*"/g);
                 for(var i=0; i < excludedappids.length; i++) {
