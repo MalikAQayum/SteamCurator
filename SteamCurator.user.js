@@ -1,15 +1,15 @@
 // ==UserScript==
 // @name         Steam Curator
 // @namespace    https://malikaqayum.github.io/SteamCurator/
-// @version      0.10
+// @version      0.11
 // @description  Does Curator Stuff.
 // @author       MalikQayum
 // @connect      api.steampowered.com
 // @connect      store.steampowered.com
 // @connect      help.steampowered.com
 // @connect      steamcommunity.com
-// @match        https://store.steampowered.com/curator/*/admin/
-// @match        https://store.steampowered.com/curator/*/admin/livestat
+// @match        https://store.steampowered.com/curator/*
+// @include      /^https?://store.steampowered.com/app/*/
 // @require     https://raw.githubusercontent.com/MalikAQayum/SteamCurator/master/lib/Chartjs_v1.1.1.js
 // @require     https://raw.githubusercontent.com/MalikAQayum/SteamCurator/master/lib/jQuery_v1.11.1.js
 // @require     https://raw.githubusercontent.com/MalikAQayum/SteamCurator/master/lib/titleAlert.js
