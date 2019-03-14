@@ -3,7 +3,7 @@ function handleData(sourcePages){
     var re_copies = /(offered)(.*)(copies)/g;
     var pe_copy = sourcePages.match(re_copy);
     var pe_copies = sourcePages.match(re_copies);
-    console.log(pe_copies + " : " + pe_copy.length);
+    console.log(pe_copies + " : " + pe_copy);
 
     pe_copies = pe_copies.map(function(item){
         return item.replace('offered ', '').replace(' copies', '');
