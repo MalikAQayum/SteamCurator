@@ -1,6 +1,4 @@
-function getExcludedAjax(){
-    var clanid=localStorage.getItem("myclanid");
-
+function getExcludedAjax(option,clanid){
     GM_xmlhttpRequest({
         method: "GET",
         url: "https://store.steampowered.com/curator/"+clanid+"/admin/excluded?ajax=1",

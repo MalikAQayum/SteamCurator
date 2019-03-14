@@ -1,5 +1,4 @@
-function getPendingAjax(clanid){
-    var clanid=localStorage.getItem("myclanid");
+function getPendingAjax(option,clanid){
     GM_xmlhttpRequest({
         method: "GET",
         url: "https://store.steampowered.com/curator/"+clanid+"/admin/pending?ajax=1",

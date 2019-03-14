@@ -1,5 +1,4 @@
-function handleStoreData(sourcePages){
-    var clanid=localStorage.getItem("myclanid");
+function handleStoreData(clanid,sourcePages){
     sourcePages = sourcePages.split(",");
     var peAppid = sourcePages.includes($J(location).attr("href").split("/")[4]);
     console.log(peAppid);
