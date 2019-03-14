@@ -8,6 +8,7 @@ function getPendingAjax(option,clanid){
         onload: function(res) {
             if(res.status === 200){
                 GM.setValue('pSource',res.responseText);
+                console.log(GM.getValue('pSource'));
                 console.log("status "+ res.status+" => Success");
                 var pendingappids = res.responseText.match(/app-ctn-[0-9]*"/g);
                 for(var i=0; i < pendingappids.length; i++) {
