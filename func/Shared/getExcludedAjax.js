@@ -13,17 +13,21 @@ function getExcludedAjax(option,clanid){
                 for(var i=0; i < excludedappids.length; i++) {
                     excludedappids[i] = excludedappids[i].replace(/app-ctn-/g, '').replace(/"/g, '');
                 }
-                localStorage.setItem('eAppids',excludedappids.length);
+                if(option === 0){
+                    localStorage.setItem('eAppids',excludedappids.length);
+                }else if(option === 1){
+                    localStorage.setItem('store_eAppids',excludedappids);
+                }else{
+                }
             }else if(res.status === 500){
                 console.log("status "+ res.status+" => Internal Server Error");
-                setTimeout(function(){getExcludedAjax(clanid);}, 100);
+                setTimeout(function(){getExcludedAjax(option,clanid);}, 100);
             }else if(res.status === 302){
-                console.log(clanid);
                 console.log("status "+ res.status+" => Moved Temporarily");
-                setTimeout(function(){getExcludedAjax(clanid);}, 100);
+                setTimeout(function(){getExcludedAjax(option,clanid);}, 100);
             }else{
                 console.log("status "+ res.status+" => Unknown Error?");
-                setTimeout(function(){getExcludedAjax(clanid);}, 100);
+                setTimeout(function(){getExcludedAjax(option,clanid);}, 100);
             }
         }
     });
