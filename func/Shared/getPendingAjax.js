@@ -7,17 +7,17 @@ function getPendingAjax(option,clanid){
         },
         onload: function(res) {
             if(res.status === 200){
-                localStorage.setItem('pSource',res.responseText);
+                GM.setValue('pSource',res.responseText);
                 console.log("status "+ res.status+" => Success");
                 var pendingappids = res.responseText.match(/app-ctn-[0-9]*"/g);
                 for(var i=0; i < pendingappids.length; i++) {
                     pendingappids[i] = pendingappids[i].replace(/app-ctn-/g, '').replace(/"/g, '');
                 }
                 if(option === 0){
-                    GM.setValue("pAppids", JSON.stringify(pendingappids.length));
+                    GM.setValue("pAppids", pendingappids.length);
                     //localStorage.setItem('pAppids',pendingappids.length);
                 }else if(option === 1){
-                    GM.setValue("store_pAppids", JSON.stringify(pendingappids));
+                    GM.setValue("store_pAppids", pendingappids);
                     //localStorage.setItem('store_pAppids',pendingappids);
                 }else{
                 }
