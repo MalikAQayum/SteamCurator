@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Steam Curator
 // @namespace    https://malikaqayum.github.io/SteamCurator/
-// @version      0.20
+// @version      0.21
 // @description  Does Curator Stuff.
 // @author       MalikQayum
 // @connect      api.steampowered.com
@@ -37,13 +37,18 @@
 // @updateURL   https://github.com/MalikAQayum/SteamCurator/raw/master/SteamCurator.user.js
 // @grant        GM_xmlhttpRequest
 // @grant        GM_addStyle
+// @grant        GM.setValue
+// @grant        GM.getValue
+// @grant        GM.deleteValue
 // @run-at      document-idle
 // ==/UserScript==
 
 if (/store.steampowered.com\/app/.test(window.location.href)){
     var clanid="33779114-pcgameit"; //make this a setting (settings page.)
-    localStorage.removeItem('store_pAppids');
-    localStorage.removeItem('store_eAppids');
+    GM.deleteValue("store_pAppids");
+    GM.deleteValue("store_eAppids");
+    //localStorage.removeItem('store_pAppids');
+    //localStorage.removeItem('store_eAppids');
     getPendingAjax(1,clanid);
     getExcludedAjax(1,clanid);
     validateStorage_2(clanid);
@@ -85,9 +90,13 @@ table.MQStyle tfoot .links a{ display: inline-block; background: #FFFFFF; color:
     (function($)
      {
         $(document).ready(function(){
-            localStorage.clear();
-            ClearlocalStorage_0();
-            ClearlocalStorage_1();
+            let keys = await GM.listValues();
+            for (let key of keys) {
+                GM.deleteValue(key);
+            }
+            //localStorage.clear();
+            ClearlocalStorage_0(); // probably needs a rename now that we moved away from localStorage
+            ClearlocalStorage_1(); // probably needs a rename now that we moved away from localStorage
 
             const timerloop = 30000;
             const clanid = $(location).attr("href").split("/")[4];
@@ -99,7 +108,7 @@ table.MQStyle tfoot .links a{ display: inline-block; background: #FFFFFF; color:
             getAcceptedAjax(clanid);
             getPendingAjax(0,clanid);
             getExcludedAjax(0,clanid);
-            PCGameitlocalStorage();
+            PCGameitlocalStorage(); // probably needs a rename now that we moved away from localStorage
 
             var refreshId = setInterval(function(){
                 $(".titleframe.PCGameitLoader").hide();
@@ -109,7 +118,7 @@ table.MQStyle tfoot .links a{ display: inline-block; background: #FFFFFF; color:
                 getAcceptedAjax(clanid);
                 getPendingAjax(0,clanid);
                 getExcludedAjax(0,clanid);
-                PCGameitlocalStorage();
+                PCGameitlocalStorage(); // probably needs a rename now that we moved away from localStorage
                 validateStorage_0();
                 validateStorage_1();
                 pgbar(timerloop);
