@@ -14,10 +14,10 @@ function getExcludedAjax(option,clanid){
                     excludedappids[i] = excludedappids[i].replace(/app-ctn-/g, '').replace(/"/g, '');
                 }
                 if(option === 0){
-                    GM.setValue("eAppids", excludedappids.length);
+                    GM.setValue("eAppids", JSON.stringify(excludedappids.length));
                     //localStorage.setItem('eAppids',excludedappids.length);
                 }else if(option === 1){
-                    GM.setValue("store_eAppids", excludedappids);
+                    GM.setValue("store_eAppids", JSON.stringify(excludedappids));
                     //localStorage.setItem('store_eAppids',excludedappids);
                 }else{
                 }
