@@ -1,4 +1,5 @@
 function handleData(sourcePages){
+    console.log(sourcePages);
     var re_copy = /(.*offered\s+)(.*)(\s+copy.*)/g;
     var re_copies = /(offered)(.*)(copies)/g;
     var pe_copy = sourcePages.match(re_copy);
