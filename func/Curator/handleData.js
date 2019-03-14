@@ -18,7 +18,8 @@ function handleData(sourcePages){
     for(var j=0; j < appids.length; j++) {
         appids[j] = appids[j].replace(/app-ctn-/g, '');
     }
-
-    localStorage.setItem('peCopies',pe_copies_count);
-    localStorage.setItem('UniqueAppids',appids.length);
+    GM.setValue("peCopies", pe_copies_count);
+    GM.setValue("UniqueAppids", appids.length);
+    //localStorage.setItem('peCopies',pe_copies_count);
+    //localStorage.setItem('UniqueAppids',appids.length);
 }
