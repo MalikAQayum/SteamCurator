@@ -1,5 +1,5 @@
 function getExcludedAjax(clanid){
-        var clanid="33779114-pcgameit";
+        //var clanid="33779114-pcgameit";
 
     GM_xmlhttpRequest({
         method: "GET",
