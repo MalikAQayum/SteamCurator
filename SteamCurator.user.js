@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Steam Curator
 // @namespace    https://malikaqayum.github.io/SteamCurator/
-// @version      0.9
+// @version      0.10
 // @description  Does Curator Stuff.
 // @author       MalikQayum
 // @connect      api.steampowered.com
@@ -38,12 +38,14 @@
 // @grant        GM_addStyle
 // @run-at      document-idle
 // ==/UserScript==
-    var clanid="33779114-pcgameit";
+
+localStorage.clear();
+localStorage.setItem("myclanid","33779114-pcgameit");
 
 if (/store.steampowered.com\/app/.test(window.location.href)){
     localStorage.removeItem('store_pAppids');
     localStorage.removeItem('store_eAppids');
-    var clanid="33779114-pcgameit";
+    var clanid=localStorage.getItem("myclanid");
     getPendingAjax(1,clanid);
     getExcludedAjax(1,clanid);
     validateStorage_2(clanid);
@@ -85,8 +87,7 @@ table.MQStyle tfoot .links a{ display: inline-block; background: #FFFFFF; color:
     (function($)
      {
         $(document).ready(function(){
-            var clanid="33779114-pcgameit";
-            localStorage.clear();
+            var clanid=localStorage.getItem("myclanid");
             ClearlocalStorage_0();
             ClearlocalStorage_1();
 
@@ -103,7 +104,7 @@ table.MQStyle tfoot .links a{ display: inline-block; background: #FFFFFF; color:
             PCGameitlocalStorage();
 
             var refreshId = setInterval(function(){
-                var clanid="33779114-pcgameit";
+                var clanid=localStorage.getItem("myclanid");
                 $(".titleframe.PCGameitLoader").hide();
                 myCuratorLicenses();
                 ClearlocalStorage_0();
