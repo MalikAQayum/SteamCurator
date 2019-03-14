@@ -13,16 +13,21 @@ function getPendingAjax(option,clanid){
                 for(var i=0; i < pendingappids.length; i++) {
                     pendingappids[i] = pendingappids[i].replace(/app-ctn-/g, '').replace(/"/g, '');
                 }
-                localStorage.setItem('pAppids',pendingappids.length);
+                if(option === 0){
+                    localStorage.setItem('pAppids',pendingappids.length);
+                }else if(option === 1){
+                    localStorage.setItem('store_pAppids',pendingappids);
+                }else{
+                }
             }else if(res.status === 500){
                 console.log("status "+ res.status+" => Internal Server Error");
-                setTimeout(function(){getPendingAjax(clanid);}, 100);
+                setTimeout(function(){getPendingAjax(option,clanid);}, 100);
             }else if(res.status === 302){
                 console.log("status "+ res.status+" => Moved Temporarily");
-                setTimeout(function(){getPendingAjax(clanid);}, 100);
+                setTimeout(function(){getPendingAjax(option,clanid);}, 100);
             }else{
                 console.log("status "+ res.status+" => Unknown Error?");
-                setTimeout(function(){getPendingAjax(clanid);}, 100);
+                setTimeout(function(){getPendingAjax(option,clanid);}, 100);
             }
         }
     });
