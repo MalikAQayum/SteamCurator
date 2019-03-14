@@ -5,6 +5,6 @@ function validateStorage_2(clanid){
         console.log("validateStorage_2 done");
         handleStoreData(clanid,sourcePages);
     }else{
-        setTimeout(function(){validateStorage_2(clanid);}, 150);
+        setTimeout(function(){console.log("sourcePages not set yet"); validateStorage_2(clanid);}, 150);
     }
 }
