@@ -41,7 +41,7 @@
 // ==/UserScript==
 
 if (/store.steampowered.com\/app/.test(window.location.href)){
-    var clanid="33779114-pcgameit";
+    var clanid="33779114-pcgameit"; //make this a setting (settings page.)
     localStorage.removeItem('store_pAppids');
     localStorage.removeItem('store_eAppids');
     getPendingAjax(1,clanid);
