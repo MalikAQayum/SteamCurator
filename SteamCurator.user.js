@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Steam Curator
 // @namespace    https://malikaqayum.github.io/SteamCurator/
-// @version      0.13
+// @version      0.14
 // @description  Does Curator Stuff.
 // @author       MalikQayum
 // @connect      api.steampowered.com
@@ -90,6 +90,7 @@ table.MQStyle tfoot .links a{ display: inline-block; background: #FFFFFF; color:
             ClearlocalStorage_1();
 
             const timerloop = 30000;
+            const clanid = $(location).attr("href").split("/")[4];
             $(".titleframe.PCGameitLoader").show();
 
             PCGameitDataContainer();
