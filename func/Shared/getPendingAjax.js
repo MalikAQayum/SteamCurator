@@ -14,10 +14,10 @@ function getPendingAjax(option,clanid){
                     pendingappids[i] = pendingappids[i].replace(/app-ctn-/g, '').replace(/"/g, '');
                 }
                 if(option === 0){
-                    GM.setValue("pAppids", pendingappids.length);
+                    GM.setValue("pAppids", JSON.stringify(pendingappids.length));
                     //localStorage.setItem('pAppids',pendingappids.length);
                 }else if(option === 1){
-                    GM.setValue("store_pAppids", pendingappids);
+                    GM.setValue("store_pAppids", JSON.stringify(pendingappids));
                     //localStorage.setItem('store_pAppids',pendingappids);
                 }else{
                 }
