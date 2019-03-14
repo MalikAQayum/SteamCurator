@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Steam Curator
 // @namespace    https://malikaqayum.github.io/SteamCurator/
-// @version      0.21
+// @version      0.22
 // @description  Does Curator Stuff.
 // @author       MalikQayum
 // @connect      api.steampowered.com
@@ -90,10 +90,6 @@ table.MQStyle tfoot .links a{ display: inline-block; background: #FFFFFF; color:
     (function($)
      {
         $(document).ready(function(){
-            let keys = await GM.listValues();
-            for (let key of keys) {
-                GM.deleteValue(key);
-            }
             //localStorage.clear();
             ClearlocalStorage_0(); // probably needs a rename now that we moved away from localStorage
             ClearlocalStorage_1(); // probably needs a rename now that we moved away from localStorage
