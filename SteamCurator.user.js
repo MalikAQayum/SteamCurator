@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Steam Curator
 // @namespace    https://malikaqayum.github.io/SteamCurator/
-// @version      0.22
+// @version      0.23
 // @description  Does Curator Stuff.
 // @author       MalikQayum
 // @connect      api.steampowered.com
@@ -43,6 +43,7 @@
 
 if (/store.steampowered.com\/app/.test(window.location.href)){
     var clanid="33779114-pcgameit"; //make this a setting (settings page.)
+	verSteamCurator();
     localStorage.removeItem('store_pAppids');
     localStorage.removeItem('store_eAppids');
     getPendingAjax(1,clanid);
@@ -58,6 +59,7 @@ if(document.URL.match(re_admin))
 }
 
 if (/\/admin\/livestat/.test(window.location.href)){
+	verSteamCurator()
     CleanPage();
     GM_addStyle(`
 .test00 { color: #ff0099}
