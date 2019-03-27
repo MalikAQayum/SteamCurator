@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Steam Curator
 // @namespace    https://malikaqayum.github.io/SteamCurator/
-// @version      0.21
+// @version      0.22
 // @description  Does Curator Stuff.
 // @author       MalikQayum
 // @connect      api.steampowered.com
@@ -30,6 +30,7 @@
 // @require     https://raw.githubusercontent.com/MalikAQayum/SteamCurator/master/func/Curator/PCGameitNewestAppid.js
 // @require     https://raw.githubusercontent.com/MalikAQayum/SteamCurator/master/func/Curator/myCuratorLicenses.js
 // @require     https://raw.githubusercontent.com/MalikAQayum/SteamCurator/master/func/Curator/cChart_v1.js
+// @require     https://raw.githubusercontent.com/MalikAQayum/SteamCurator/master/func/Curator/autoExtendOffers.js
 // @require     https://raw.githubusercontent.com/MalikAQayum/SteamCurator/master/func/Shared/verSteamCurator.js
 // @require     https://raw.githubusercontent.com/MalikAQayum/SteamCurator/master/func/Store/validateStorage_2.js
 // @require     https://raw.githubusercontent.com/MalikAQayum/SteamCurator/master/func/Store/handleStoreData.js
@@ -53,6 +54,7 @@ var re_admin = new RegExp(/admin/);
 if(document.URL.match(re_admin))
 {
     livestat($J(location).attr("href").split("/")[4]);
+	autoExtendOffers($J(location).attr("href").split("/")[4]);
 }
 
 if (/\/admin\/livestat/.test(window.location.href)){
