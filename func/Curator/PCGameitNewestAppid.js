@@ -9,19 +9,19 @@ function PCGameitNewestAppid(appid){
             if(res.status === 200){
                 var appdetails = JSON.parse(res.responseText);
                 var type = appdetails[appid]['data']['type'];
-                var is_free = appdetails[appid]['data']['is_free'];
+                var short_description = appdetails[appid]['data']['short_description'];
                 var name = appdetails[appid]['data']['name'];
 
                 if ($J(".admin_content")[0]){
                     if ($J(".titleframe.PCGameitNewestAppid")[0]){
-                        $J('.titleframe.PCGameitNewestAppid').html(`<table class="MQStyle"><tbody><tr><th class="test01">`+"Latest Recieved Curator Package: "+ appid + `</th></tr></tbody></table>` + `<table class="MQStyle"><tbody><tr><th class="test01">`+'<a href="https://store.steampowered.com/app/'+appid+'" target="_blank"><img src="https://steamcdn-a.akamaihd.net/steam/apps/'+appid+'/capsule_231x87.jpg" width="90%"></a>'+`</th><th>`+name + '<br>This '+type+' is F2P/Free? '+ is_free+`</th></tr></tbody></table>`);
+                        $J('.titleframe.PCGameitNewestAppid').html(`<table class="MQStyle"><tbody><tr><th class="test01">`+"Latest Recieved Curator Package: "+ appid + `</th></tr></tbody></table>` + `<table class="MQStyle"><tbody><tr><th class="test01">`+'<a href="https://store.steampowered.com/app/'+appid+'" target="_blank"><img src="https://steamcdn-a.akamaihd.net/steam/apps/'+appid+'/capsule_231x87.jpg" width="90%"></a>'+`</th><th>`+name + '<br>'+ short_description+`</th></tr></tbody></table>`);
                     }else{
                         $J( ".admin_content" ).prepend( "<div class=\"titleframe PCGameitNewestAppid\"></div><br>" );
-                        $J('.titleframe.PCGameitNewestAppid').html(`<table class="MQStyle"><tbody><tr><th class="test01">`+"Latest Recieved Curator Package: "+ appid + `</th></tr></tbody></table>` + `<table class="MQStyle"><tbody><tr><th class="test01">`+'<a href="https://store.steampowered.com/app/'+appid+'" target="_blank"><img src="https://steamcdn-a.akamaihd.net/steam/apps/'+appid+'/capsule_231x87.jpg" width="90%"></a>'+`</th><th>`+name + '<br>This '+type+' is F2P/Free? '+ is_free+`</th></tr></tbody></table>`);
+                        $J('.titleframe.PCGameitNewestAppid').html(`<table class="MQStyle"><tbody><tr><th class="test01">`+"Latest Recieved Curator Package: "+ appid + `</th></tr></tbody></table>` + `<table class="MQStyle"><tbody><tr><th class="test01">`+'<a href="https://store.steampowered.com/app/'+appid+'" target="_blank"><img src="https://steamcdn-a.akamaihd.net/steam/apps/'+appid+'/capsule_231x87.jpg" width="90%"></a>'+`</th><th>`+name + '<br>'+ short_description+`</th></tr></tbody></table>`);
                     }
                 } else {
                     $J( ".darkframe" ).prepend( "<div class=\"titleframe PCGameitNewestAppid\"></div><br>" );
-                    $J('.titleframe.PCGameitNewestAppid').html(`<table class="MQStyle"><tbody><tr><th class="test01">`+"Latest Recieved Curator Package: "+ appid + `</th></tr></tbody></table>` + `<table class="MQStyle"><tbody><tr><th class="test01">`+'<a href="https://store.steampowered.com/app/'+appid+'" target="_blank"><img src="https://steamcdn-a.akamaihd.net/steam/apps/'+appid+'/capsule_231x87.jpg" width="90%"></a>'+`</th><th>`+name + '<br>This '+type+' is F2P/Free? '+ is_free+`</th></tr></tbody></table>`);
+                    $J('.titleframe.PCGameitNewestAppid').html(`<table class="MQStyle"><tbody><tr><th class="test01">`+"Latest Recieved Curator Package: "+ appid + `</th></tr></tbody></table>` + `<table class="MQStyle"><tbody><tr><th class="test01">`+'<a href="https://store.steampowered.com/app/'+appid+'" target="_blank"><img src="https://steamcdn-a.akamaihd.net/steam/apps/'+appid+'/capsule_231x87.jpg" width="90%"></a>'+`</th><th>`+name + '<br>'+ short_description+`</th></tr></tbody></table>`);
                 }
 
             }else if(res.status === 500){
